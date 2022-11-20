@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { search } from "../api"
 import NewsCard from "./NewsCard"
-import Loader from "./Loader"
 
 const Search = () => {
   const [searchResult, setSearchResult] = useState([])
@@ -9,7 +8,6 @@ const Search = () => {
 
   const searchNews = async (query) => {
     const { data } = await search(query)
-
     setSearchResult(data.articles)
   }
 
@@ -38,7 +36,9 @@ const Search = () => {
           <button className="bg-dark text-white px-6" onClick={() => searchNews(searchQuery)}>Search</button>
         </div>
         <div className="flex flex-col md:grid gap-4 md:grid-cols-3 xl:grid-cols-4 mt-8">
-          {searchResult.map((news, i) => (
+          {searchResult.sort((a, b) => {
+            return new Date(b.publishedAt) - new Date(a.publishedAt)
+          }).map((news, i) => (
             <NewsCard key={i} news={news} />
           ))}
         </div>

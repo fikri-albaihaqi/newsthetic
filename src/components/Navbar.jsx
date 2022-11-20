@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
     <nav className="fixed bg-white w-screen top-0 shadow-md z-10">
       <div className='flex items-center px-4 border-b'>
-        <span onClick={() => toggleMenu()} class="md:hidden material-symbols-outlined font-bold text-2xl cursor-pointer">
+        <span onClick={() => toggleMenu()} className="md:hidden material-symbols-outlined font-bold text-2xl cursor-pointer">
           menu
         </span>
         <img ref={logoRef} src={logo} alt="" className='hidden md:block m-auto w-[320px] p-4' />
